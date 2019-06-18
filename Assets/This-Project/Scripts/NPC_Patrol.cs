@@ -17,17 +17,27 @@ public class NPC_Patrol : MonoBehaviour
 
   // This will be the length of the array? used in drawRays.
   [SerializeField]
-  Vector3 rayVector = new Vector3(1,0,0);
+  Vector3 rayVector;
+
+  public float rayLength = 10f;
+
+  public float dist;
 
   [SerializeField]
-  Vector3 rayHeight = new Vector3(0,.05f,0);
+  Vector3 rayHeight = new Vector3(0.5f,.05f,0);
+
+  public Vector3[] hitNavPoints;
+
+  public Vector3 destination;
+
+  public float maxDistance;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+      hitNavPoints = new Vector3[rayNumber];
     }
 
     // Update is called once per frame
@@ -38,7 +48,7 @@ public class NPC_Patrol : MonoBehaviour
 
     public void drawRays()
     {
-      rayVector = new Vector3(10,0,0);
+      rayVector = transform.TransformDirection(Vector3.right);
       // the view range divided by the number of rays.
       separation = viewRange/rayNumber;
       //print(separation);
@@ -51,18 +61,20 @@ public class NPC_Patrol : MonoBehaviour
         rayVector = Quaternion.Euler(0, (separation)%viewRange, 0) * rayVector;
 
 
-        Debug.DrawRay(transform.position + rayHeight, rayVector, Color.green);
+        Debug.DrawRay(transform.position + rayHeight, rayVector*rayLength, Color.green);
         //Debug.DrawRay(transform.position + rayHeight, transform.right, Color.green);
         //Debug.DrawRay(transform.position + rayHeight, -transform.right, Color.green);
         //Debug.DrawRay(transform.position + rayHeight, transform.right, Color.green);
         //Debug.DrawRay(transform.position + rayHeight, -transform.forward, Color.green);
 
         //******This is what works for now******
-        if (Physics.Raycast(transform.position+ rayHeight, rayVector, out hit, 10f))
+        if (Physics.Raycast(transform.position+ rayHeight, rayVector , out hit, rayLength))
         {
           hit.collider.gameObject.tag = "NPC_Hit";
+          hitNavPoints[i] = hit.point;
 
-          print(hit.point);
+          //Debug.Log("Point " + hit.point);
+          //Debug.Log("The array point " + i + " is " + hitNavPoints[i]);
         }
         //if (Physics.Raycast(transform.position+ rayHeight, transform.TransformDirection(-Vector3.forward), out hit, 10f))
         //{
@@ -83,10 +95,33 @@ public class NPC_Patrol : MonoBehaviour
         //  print(hit.point);
         //}
 
+
+
       }
+      destination = findDestination(hitNavPoints);
     }
 
-    void OnCollisionEnter(){
-      print("collision");
+    Vector3 findDestination(Vector3[] hitNavPoints)
+    {
+      destination = transform.position;
+      for(int i = 0; i<hitNavPoints.Length;i++)
+      {
+        dist = Vector3.Distance(hitNavPoints[i], transform.position);
+        if (dist>maxDistance)
+        {
+          maxDistance = dist;
+          destination = hitNavPoints[i];
+        }
+        //print("Distance to other: " + dist);
+        print("Destination1 "+ destination);
+      }
+      print("Destination2 " + destination);
+
+
+
+
+      return  destination;
     }
+
+
 }

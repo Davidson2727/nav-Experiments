@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f8ea1b9b87f4bdd8c8481bd9c2935d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDrawRadius: 0.3
+  debugDrawRadius: 1
 --- !u!135 &9023030767650839996
 SphereCollider:
   m_ObjectHideFlags: 0
