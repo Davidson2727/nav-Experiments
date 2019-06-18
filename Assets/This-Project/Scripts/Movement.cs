@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
       //Debug.Log("position "+transform.position);
-      transform.Translate(0, 0, -Time.deltaTime*2);
+      transform.Translate(0, 0, -Time.deltaTime);
       //this.transform.Rotate(0, 3, 0, Space.Self);
     }
 }
