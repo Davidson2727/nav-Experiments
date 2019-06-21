@@ -45,7 +45,7 @@ public class Waypoint : MonoBehaviour
 
     public IEnumerator timer()
     {
-      yield return new WaitForSeconds(2f);
+      yield return new WaitForSeconds(.04f);
       gameObject.tag = "ThisNavPoint";
     }
 
