@@ -12,7 +12,7 @@ public class NPC_Patrol : MonoBehaviour
 
   // The view range in degrees.
   [SerializeField]
-  public int _viewRange = 180;
+  public int _viewRange = 210;
 
   // The distance between the rays.
   [SerializeField]
