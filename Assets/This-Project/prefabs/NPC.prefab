@@ -129,13 +129,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a174335894d204153817c4b29b8110e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayNumber: 5
-  _viewRange: 180
-  _separation: 36
+  _rayNumber: 10
+  _viewRange: 210
+  _separation: 21
   _rayVector: {x: 0.8761956, y: 0, z: 0.48195606}
   _rayLength: 10
   _dist: 0.39704704
-  _rayHeight: {x: 0.5, y: 0.05, z: 0}
+  _rayHeight: {x: 0.02, y: 0.05, z: 0}
   _hitNavPoints:
   - {x: 44.120384, y: 0.51642996, z: -5.1721306}
   - {x: 44.960197, y: 0.56643, z: -5.4910893}
@@ -144,6 +144,7 @@ MonoBehaviour:
   - {x: 44.50952, y: 0.56643, z: -5.2331104}
   _destination: {x: 44.120384, y: 0.51642996, z: -5.1721306}
   _maxDistance: 0.89973384
+  _onRoute: 0
 --- !u!114 &8240895849680692734
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,32 +20,39 @@ public class NPC_Patrol : MonoBehaviour
 
   // The direction of the ray.
   [SerializeField]
-  Vector3 _rayVector;
+  public Vector3 _rayVector;
 
   // The length of the ray.
+  [SerializeField]
   public float _rayLength = 10f;
 
   // The distance between NPC and navPoint.
+  [SerializeField]
   public float _dist;
 
   // The height of the ray from the ground.
   [SerializeField]
-  Vector3 _rayHeight = new Vector3(0.5f,.05f,0);
+  Vector3 _rayHeight = new Vector3(0.12f,.05f,0);
 
   // May have to move this back into update
-  RaycastHit _hit;
+  [SerializeField]
+  public RaycastHit _hit;
 
   // Array of navPoints hit by the NPC
+  [SerializeField]
   public Vector3[] _hitNavPoints;
 
   // The destination chosen from _hitNavPoints
+  [SerializeField]
   public Vector3 _destination;
 
   // The
+  [SerializeField]
   public float _maxDistance;
 
   // Check to see in the NPC is moving
-  bool _onRoute = false;
+  [SerializeField]
+  public bool _onRoute = false;
 
   // NavMeshAgent component
   NavMeshAgent _agent;
